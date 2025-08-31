@@ -1,0 +1,344 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "background": "#1e1e2e",
+    "foreground": "#cdd6f4",
+    "primary": "#cba6f7",
+    "secondary": "#89b4fa",
+    "accent": "#f38ba8"
+  },
+  "console_title_template": "⚡ {{.PWD}} | 💻 {{.UserName}}@{{.HostName}}",
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:accent",
+    "template": "\uebca \uf101 "
+  },
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:accent",
+    "template": "\uebca \u276f "
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:accent",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+        },
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:primary",
+          "template": "{{ if .SSHSession }}\ueba9 {{ end }}\udb80\uddc4 {{.UserName}}"
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:primary",
+          "template": "\uf07c {{ .Path }}",
+          "properties": {
+            "style": "agnoster_full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:primary",
+          "template": "{{ if .User.Name }}\ueb00 {{ .User.Name }}{{ end }} {{ if .Upstream }}{{ .UpstreamIcon }}{{ end }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf1c9{{ if .Working.Unmerged }} \uf467 {{ .Working.Unmerged }}{{ end }}{{ if .Working.Deleted }} \uf068 {{ .Working.Deleted }}{{ end }}{{ if .Working.Added }} \uf067 {{ .Working.Added }}{{ end }}{{ if .Working.Modified }} \udb83\uddc9 {{ .Working.Modified }}{{ end }}{{ if .Working.Untracked }} \uea7f {{ .Working.Untracked }}{{ end }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ if .Staging.Deleted }}\uf068{{ .Staging.Deleted }} {{ end }}{{ if .Staging.Added }}\uf067{{ .Staging.Added }} {{ end }}{{ if .Staging.Modified }}\udb83\uddc9{{ .Staging.Modified }} {{ end }}{{ end }}",
+          "properties": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "fetch_user": true,
+            "fetch_worktree_count": true,
+            "fetch_stash_count": true,
+            "fetch_ahead_behind": true,
+            "branch_icon": "\uf418 ",
+            "branch_identical_icon": "\udb85\udcce ",
+            "branch_ahead_icon": "\uebff ",
+            "branch_behind_icon": "\uebfc ",
+            "branch_gone_icon": "\uead0 ",
+            "commit_icon": "\uF417",
+            "tag_icon": "\uF412",
+            "rebase_icon": "\uE728",
+            "cherry_pick_icon": "\uE29B",
+            "revert_icon": "\uF0E2",
+            "merge_icon": "\uE727",
+            "no_commits_icon": "\udb80\udc95",
+            "github_icon": "\uF408",
+            "gitlab_icon": "\uF296",
+            "bitbucket_icon": "\uF171",
+            "azure_devops_icon": "\uEBE8",
+            "codecommit_icon": "\uF270",
+            "codeberg_icon": "\uF330",
+            "git_icon": "\uE5FB"
+          }
+        },
+        {
+          "type": "node",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}\ue719 {{ .Full }}",
+          "properties": {
+            "fetch_package_manager": true,
+            "npm_icon": "\ue71e",
+            "yarn_icon": "\ue6a7",
+            "pnpm_icon": "\ue865",
+            "bun_icon": "\ue76f"
+          }
+        },
+        {
+          "type": "bun",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue76f {{ .Full }}"
+        },
+        {
+          "type": "deno",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue7c0 {{ .Full }}",
+          "properties": {
+            "extensions": ["deno.json"],
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "go",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\udb81\udfd3 {{ .Full }}"
+        },
+        {
+          "type": "cmake",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue794 {{ .Full }}"
+        },
+        {
+          "type": "firebase",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue787 {{ .Project }}"
+        },
+        {
+          "type": "flutter",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue7dd {{ .Full }}"
+        },
+        {
+          "type": "pnpm",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue865 {{ .Full }}",
+          "properties": {
+            "extensions": ["pnpm-lock.yaml"],
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "react",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue7ba {{ .Full }}"
+        },
+        {
+          "type": "svelte",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue8b7 {{ .Full }}"
+        },
+        {
+          "type": "tauri",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue8bb {{ .Full }}"
+        },
+        {
+          "type": "angular",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue753 {{ .Full }}"
+        },
+        {
+          "type": "python",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue73c {{ .Full }}"
+        },
+        {
+          "type": "rust",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue7a8 {{ .Full }}"
+        },
+        {
+          "type": "lua",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue620 {{ .Full }}"
+        },
+        {
+          "type": "swift",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue699 {{ .Full }}"
+        },
+        {
+          "type": "zig",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:foreground",
+          "template": "\ue8ef {{ .Full }}"
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:accent",
+          "template": "\uf254 {{ .FormattedMs }}",
+          "properties": {
+            "threshold": 0.000001,
+            "style": "austin"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:secondary",
+          "template": "\ue641 {{ .CurrentDate | date .Format }}",
+          "properties": {
+            "time_format": "15:04"
+          }
+        },
+        {
+          "type": "sysinfo",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:primary",
+          "template": "\uf2db {{ round .PhysicalPercentUsed .Precision }}%"
+        },
+        {
+          "type": "http",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:secondary",
+          "template": "\uf15a ${{ .Body.bitcoin.usd }} \ued58 ${{ .Body.ethereum.usd }}",
+          "properties": {
+            "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd",
+            "http_timeout": 1000,
+            "cache_duration": "5m"
+          }
+        },
+        {
+          "type": "ipify",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:background",
+          "background": "p:secondary",
+          "template": "\udb86\udd82 {{ .IP }}",
+          "properties": {
+            "http_timeout": 1000
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:accent",
+          "template": "\uebca \u276f"
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
